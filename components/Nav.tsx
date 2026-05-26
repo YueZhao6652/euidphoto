@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { Upload } from 'lucide-react'
 
 interface NavProps {
@@ -21,10 +22,14 @@ export default function Nav({ onUploadClick, showBack, onBack, isCompliant }: Na
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-cream/85 backdrop-blur-lg border-b border-border">
       <div className="max-w-6xl mx-auto px-6 h-[60px] flex items-center justify-between">
+
         {/* Logo */}
-        <a href="/" className="font-display text-xl tracking-tight text-ink">
+        <Link
+          href="/"
+          className="font-display text-xl tracking-tight text-ink"
+        >
           EUID<span className="text-accent">Photo</span>
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         {!showBack && (
@@ -42,6 +47,7 @@ export default function Nav({ onUploadClick, showBack, onBack, isCompliant }: Na
                 {label}
               </button>
             ))}
+
             <button
               onClick={onUploadClick}
               className="ml-2 flex items-center gap-2 bg-ink text-white text-sm font-medium px-4 py-2 rounded-full hover:bg-accent transition-all hover:-translate-y-px"
@@ -63,6 +69,7 @@ export default function Nav({ onUploadClick, showBack, onBack, isCompliant }: Na
                 Compliant
               </span>
             )}
+
             <button
               onClick={onBack}
               className="text-sm font-medium text-ink-3 hover:text-ink hover:bg-border px-3 py-1.5 rounded-lg transition-colors"
@@ -102,8 +109,12 @@ export default function Nav({ onUploadClick, showBack, onBack, isCompliant }: Na
               {label}
             </button>
           ))}
+
           <button
-            onClick={() => { onUploadClick?.(); setMenuOpen(false) }}
+            onClick={() => {
+              onUploadClick?.()
+              setMenuOpen(false)
+            }}
             className="mt-2 flex items-center justify-center gap-2 bg-ink text-white text-sm font-medium px-4 py-3 rounded-xl"
           >
             <Upload size={15} />
